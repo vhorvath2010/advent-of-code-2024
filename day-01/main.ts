@@ -19,7 +19,14 @@ console.log("Lists sorted");
 
 console.log("Calculating diff...");
 let sum = 0;
+const secondListFrequency: { [key: number]: number } = {};
 for (let i = 0; i < n; i++) {
-  sum += Math.abs(firstList[i] - secondList[i]);
+  const firstNum = firstList[i];
+  const secondNum = secondList[i];
+  sum += Math.abs(firstNum - secondNum);
+  secondListFrequency[secondNum] = (secondListFrequency[secondNum] || 0) + 1;
 }
 console.log(sum);
+
+console.log("Calculating similarity score...");
+console.log(firstList.reduce((accumulator, num) => accumulator + num * (secondListFrequency[num] || 0), 0));
