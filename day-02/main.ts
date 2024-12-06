@@ -14,7 +14,8 @@ function isReportSafe(report: number[]): boolean {
     if (diff === 0 || Math.abs(diff) > 3) {
       return false;
     }
-    if (diff < 0 && isIncreasing) {
+    const isDiffIncreasing = diff > 0;
+    if (isDiffIncreasing !== isIncreasing) {
       return false;
     }
   }
